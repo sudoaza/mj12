@@ -1,0 +1,35 @@
+<h1>Listing entities</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Meta</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @entities.each do |entity| %>
+      <tr>
+        <td><%= entity.title %></td>
+        <td>
+        <ul>
+        <% entity.meta.each do |meta| %>
+          <li><%= meta %></li>
+        <% end %>
+        </ul>
+        </td>
+        <td><%= link_to 'Show', entity %></td>
+        <td><%= link_to 'Edit', edit_entity_path(entity) %></td>
+        <td><%= link_to 'Destroy', entity, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Entity', new_entity_path %>

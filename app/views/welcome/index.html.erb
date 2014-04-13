@@ -1,0 +1,26 @@
+
+<div class="row">
+
+  <div class="col-md-8">
+
+  <p>Esta aplicación te permite relacionar entidades (personas, organizaciones, empresas, etc) y agregarles datos extra tanto a las entidades como a las relaciones entre ellas.</p>
+
+  <div id="chart"></div>
+  <script type="text/javascript" src="/assets/force.js"></script>
+
+  </div>
+
+  <div class="col-md-4">
+  <h3>Agregar entidad <i class="icon icon-help" title="Por ejemplo personas, empresas, fundaciones, etc."></i></h3>
+
+  <%= render "entities/form" %>
+
+  <h3>Agregar relación</h3>
+  <i class="icon icon-help" title="Para quien trabaja, quienes son socios, compañeros, etc."></i>
+
+  <%= render "links/form" %>
+
+  </div>
+
+</div>
+

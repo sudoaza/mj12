@@ -1,0 +1,56 @@
+<%= form_for(setup_link(@link)) do |f| %>
+  <% if @link.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@link.errors.count, "error") %> prohibited this link from being saved:</h2>
+
+      <ul>
+      <% @link.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="row link">
+  <%= f.fields_for :ent_a do |ff| %>
+    <div class="field col-md-6">
+      <%= ff.label :title, "Entidad A" %>
+      <%= ff.autocomplete_field :title, autocomplete_entity_title_entities_path, :update_elements => {:id => '#link_ent_a_attributes_id'} %>
+      <%= ff.hidden_field :id %>
+    </div>
+  <% end %>
+   
+
+  <%= f.fields_for :ent_b do |ff| %>
+    <div class="field col-md-6">
+      <%= ff.label :title, "Entidad B" %>
+      <%= ff.autocomplete_field :title, autocomplete_entity_title_entities_path, :update_elements => {:id => '#link_ent_b_attributes_id'}   %>
+      <%= ff.hidden_field :id %>
+    </div>
+  <% end %> 
+  </div>
+
+  <h4>Metadatos<i class="icon icon-help" title="Datos adicionales de la relación, ejemplo: fuente, año, duración, encuentros."></i></h4>
+
+  <div class="meta-list">
+  <%= f.fields_for :meta do |ff| %>
+    <div class="row meta">
+    <div class="field col-md-6">
+      <%= ff.label :key, "Campo" %>
+      <%= ff.autocomplete_field :key, autocomplete_metum_key_meta_path %>
+    </div>
+    <div class="field col-md-6">
+      <%= ff.label :value, "Valor" %>
+      <%= ff.autocomplete_field :value, autocomplete_metum_value_meta_path %>
+    </div>
+    </div>
+  <% end %>
+  </div>
+
+  <button class="add_meta_btn"><strong> + </strong> Mostrar más campos</button>
+<br />
+<br />
+  <div class="actions">
+    <%= f.submit "Guardar Relación" %>
+  </div>
+<% end %>

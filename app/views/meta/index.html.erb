@@ -1,0 +1,29 @@
+<h1>Listing meta</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Key</th>
+      <th>Value</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @meta.each do |metum| %>
+      <tr>
+        <td><%= metum.key %></td>
+        <td><%= metum.value %></td>
+        <td><%= link_to 'Show', metum %></td>
+        <td><%= link_to 'Edit', edit_metum_path(metum) %></td>
+        <td><%= link_to 'Destroy', metum, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Metum', new_metum_path %>

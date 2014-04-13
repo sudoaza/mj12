@@ -1,0 +1,41 @@
+<%= form_for(setup_entity(@entity)) do |f| %>
+  <% if @entity.errors.any? %>
+    <div id="error_explanation">
+      <h2>Hay <%= pluralize(@entity.errors.count, "error") %>:</h2>
+
+      <ul>
+      <% @entity.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field entity">
+    <%= f.label :title, "Nombre" %><br>
+    <%= f.autocomplete_field :title, autocomplete_entity_title_entities_path %>
+  </div>
+
+  <h4>Metadatos<i class="icon icon-help" title="Datos adicionales, ejemplo: dirección, telefono, mail, web."></i></h4>
+
+  <div class="meta-list">
+  <%= f.fields_for :meta do |ff| %>
+    <div class="row meta">
+    <div class="field col-md-6">
+      <%= ff.label :key, "Campo" %>
+      <%= ff.autocomplete_field :key, autocomplete_metum_key_meta_path %>
+    </div>
+    <div class="field col-md-6">
+      <%= ff.label :value, "Valor" %>
+      <%= ff.autocomplete_field :value, autocomplete_metum_value_meta_path %>
+    </div>
+    </div>
+  <% end %>
+  </div>
+  <button class="add_meta_btn"><strong> + </strong> Mostrar más campos</button>
+<br />
+<br />
+  <div class="actions">
+    <%= f.submit "Guardar Entidad" %>
+  </div>
+<% end %>

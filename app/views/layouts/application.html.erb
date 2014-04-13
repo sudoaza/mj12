@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Mapa</title>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+  <script type="text/javascript" src="/assets/d3.js"></script>
+  <script type="text/javascript" src="/assets/d3-tip/index.js"></script>
+  <link type="text/css" rel="stylesheet" href="/assets/force.css"/>
+</head>
+<body>
+
+<header>
+  <div class="navbar navbar-inverse" role="navigation">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#top-navbar-menu">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="/" class="navbar-brand">MJ12</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="top-navbar-menu">
+      <ul class="nav navbar-nav">
+        <li><a href="<%= entities_path %>" >Entidades</a></li>
+        <li><a href="<%= links_path %>" >Relaciones</a></li>
+        <li></li>
+        <li></li>
+      </ul>
+
+    <%= form_tag entities_path, :method => 'get', :class => 'navbar-form navbar-right' do %>
+    <div class="form-group">
+    <%= text_field_tag :search, params[:search], :class => 'form-control'  %>
+    </div>
+    <button class="btn btn-default" type="submit"> Buscar </button>
+    <% end %>
+
+    </div>
+  </div>
+</header>
+
+<div class="container">
+<%= yield %>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,12 @@
+<%= f.fields_for :meta do |ff| %>
+  <div class="row">
+  <div class="field col-md-6">
+    <%= ff.label :key, "Campo" %>
+    <%= ff.text_field :key %>
+  </div>
+  <div class="field col-md-6">
+    <%= ff.label :value, "Valor" %>
+    <%= ff.text_field :value %>
+  </div>
+  </div>
+<% end %>

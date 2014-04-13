@@ -1,0 +1,10 @@
+{"nodes":[
+<% @entities.each do |entity| %>
+{"index":<%= entity.id %>,"name":"<%= entity.title %>"},
+<% end %>
+"links":[
+<% @links.each do |link| %>
+{"source":<%= link.ent_a_id %>,"target":<%= link.ent_b_id %>},
+<% end %>
+]}
+
