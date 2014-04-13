@@ -21,11 +21,11 @@ A las personas y relaciones les podes agregar metadata.
 
 ## Instalar
 
-    git clone http://caca.git
+    git clone https://github.com/sudoaza/mj12.git
 
     bundle install
 
-    rake db:caca
+    rake db:create
 
 
 ## Correr
