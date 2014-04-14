@@ -27,8 +27,16 @@
       <ul class="nav navbar-nav">
         <li><a href="<%= entities_path %>" >Entidades</a></li>
         <li><a href="<%= links_path %>" >Relaciones</a></li>
-        <li></li>
-        <li></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Compartir P) <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li><a href="/map.json">Exportar</a></li>
+            <li><a href="/import">Importar</a></li>
+            <li class="divider"></li>
+            <li><a href="https://github.com/sudoaza/mj12">Contribuir</a></li>
+          </ul>
+        </li>
       </ul>
 
     <%= form_tag entities_path, :method => 'get', :class => 'navbar-form navbar-right' do %>
