@@ -1,10 +1,10 @@
-<h1>Listing entities</h1>
+<h1>Listado de Entidades</h1>
 
 <table>
   <thead>
     <tr>
-      <th>Title</th>
-      <th>Meta</th>
+      <th>Titulo</th>
+      <th>Datos Adicionales</th>
       <th></th>
       <th></th>
       <th></th>
@@ -14,7 +14,7 @@
   <tbody>
     <% @entities.each do |entity| %>
       <tr>
-        <td><%= entity.title %></td>
+        <td><%= raw(entity.link) %></td>
         <td>
         <ul>
         <% entity.meta.each do |meta| %>
@@ -22,9 +22,8 @@
         <% end %>
         </ul>
         </td>
-        <td><%= link_to 'Show', entity %></td>
-        <td><%= link_to 'Edit', edit_entity_path(entity) %></td>
-        <td><%= link_to 'Destroy', entity, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Editar', edit_entity_path(entity) %></td>
+        <td><%= link_to 'Borrar', entity, method: :delete, data: { confirm: "Seguro que quiere borrar a #{entity.title}?" } %></td>
       </tr>
     <% end %>
   </tbody>

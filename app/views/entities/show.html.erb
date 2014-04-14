@@ -11,9 +11,11 @@
 <% end %>
 </ul>
 
-<% @entity.a_links.each do |link| %>
+<% all_links = @entity.a_links | @entity.b_links %>
+
+<% all_links.each do |link| %>
 <p>
-<%= link %>
+<%= raw(link) %>
 </p>
 
 <ul>

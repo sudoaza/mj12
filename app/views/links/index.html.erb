@@ -1,4 +1,4 @@
-<h1>Listing links</h1>
+<h1>Listado de Relaciones</h1>
 
 <table>
   <thead>
@@ -12,7 +12,7 @@
   <tbody>
     <% @links.each do |link| %>
       <tr>
-	<td><%= link %></td>
+	<td><%= raw(link) %></td>
         <td>
         <ul>
         <% link.meta.each do |meta| %>
@@ -20,9 +20,8 @@
         <% end %>
         </ul>
         </td>
-        <td><%= link_to 'Show', link %></td>
-        <td><%= link_to 'Edit', edit_link_path(link) %></td>
-        <td><%= link_to 'Destroy', link, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Editar', edit_link_path(link) %></td>
+        <td><%= link_to 'Borrar', link, method: :delete, data: { confirm: "Seguro que quiere borrar la relación #{link.ent_a.title} <-> #{link.ent_b.title}?" } %></td>
       </tr>
     <% end %>
   </tbody>

@@ -12,4 +12,8 @@ class Entity
   validates :title, presence: true, length: {minimum: 2}
 
   accepts_nested_attributes_for :meta, :reject_if => :all_blank
+
+  def link
+    s = '<a href="/entities/' + self.id + '">' + self.title + '</a>'
+  end
 end

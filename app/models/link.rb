@@ -14,6 +14,6 @@ class Link
   accepts_nested_attributes_for :ent_b
 
   def to_s
-    s = self.ent_a.title + ' <-> ' + self.ent_b.title
+    s = self.ent_a.link + ' &lt;-&gt; ' + self.ent_b.link
   end
 end
