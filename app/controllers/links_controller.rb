@@ -26,9 +26,9 @@ class LinksController < ApplicationController
   def create
 
     # Load the link if it already exists
-    @link = Link.find_by ent_a_id: link_params[:ent_a_attributes][:id], ent_b_id: link_params[:ent_b_attributes][:id]
+    @link = Link.find_my_link( link_params[:ent_a_attributes][:id], link_params[:ent_b_attributes][:id] )
     if @link.nil?
-      @link = Link.find_by ent_a_id: link_params[:ent_b_attributes][:id], ent_b_id: link_params[:ent_a_attributes][:id]
+      @link = Link.find_my_link( link_params[:ent_b_attributes][:id], link_params[:ent_a_attributes][:id] )
     end
 
     if @link.nil? 

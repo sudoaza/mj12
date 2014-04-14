@@ -16,4 +16,8 @@ class Link
   def to_s
     s = self.ent_a.link + ' &lt;-&gt; ' + self.ent_b.link
   end
+
+  def self.find_my_link(a_id, b_id)
+    self.find_by ent_a_id: a_id, ent_b_id: b_id
+  end
 end

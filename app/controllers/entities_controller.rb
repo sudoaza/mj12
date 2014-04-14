@@ -11,7 +11,8 @@ class EntitiesController < ApplicationController
 
   # GET /entities/1
   # GET /entities/1.json
-  def show
+  def show  
+    @link = Link.new
   end
 
   # GET /entities/new
@@ -26,7 +27,7 @@ class EntitiesController < ApplicationController
   # POST /entities
   # POST /entities.json
   def create
-    @entity = Entity.find_by title: entity_params[:title]
+    @entity = Entity.find_my_title( entity_params[:title] )
 
     if @entity.nil?
       @entity = Entity.new(entity_params)
@@ -69,6 +70,7 @@ class EntitiesController < ApplicationController
     end
   end
 
+  # GET /map.json
   def map
     @entities = Entity.all
     @links = Link.all
@@ -93,6 +95,40 @@ class EntitiesController < ApplicationController
     render json: @son
   end
 
+  # GET /import
+  def import
+  end
+
+  # POST /import
+  # Esta primer verison del importador esta muy muy fea
+  def doimport
+    json = JSON.parse(params[:json])
+    nodes = []
+
+    json['nodes'].each do |node|
+      entity = Entity.find_my_title(node['name'])
+      if entity.present? 
+        nodes[node['index']] = entity
+      else
+        entity = Entity.new
+        entity.title = node['name']
+        entity.save()
+        nodes[node['index']] = entity
+      end
+    end
+    json['links'].each do |link|
+      source = nodes[link['source']]
+      target = nodes[link['target']]
+      link = Link.find_my_link(source,target)
+      if link.nil? 
+        link = Link.new
+        link.ent_a = source
+        link.ent_b = target
+        link.save()
+      end
+    end
+    redirect_to '/'
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.

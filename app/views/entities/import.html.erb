@@ -1,0 +1,8 @@
+<%= form_tag "/import" do %>
+  <div class="form-group">
+    <%= text_area_tag 'json', nil, rows: 30, placeHolder: 'Pega el JSON aquí.', class: 'form-control' %>
+  </div>
+  <div class="actions">
+    <%= submit_tag "Importar!", class: 'btn submit' %>
+  </div>
+<% end %>

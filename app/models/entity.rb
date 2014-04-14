@@ -13,6 +13,10 @@ class Entity
 
   accepts_nested_attributes_for :meta, :reject_if => :all_blank
 
+  def self.find_my_title( title ) 
+    self.find_by title: title
+  end
+
   def link
     s = '<a href="/entities/' + self.id + '">' + self.title + '</a>'
   end

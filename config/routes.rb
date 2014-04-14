@@ -3,6 +3,8 @@ Mapa::Application.routes.draw do
   get "welcome/index"
 
   get "map.json" => 'entities#map'
+  get "import" => 'entities#import'
+  post "import" => 'entities#doimport'
 
   resources :links do
     resources :meta
