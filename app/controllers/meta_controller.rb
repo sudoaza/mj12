@@ -1,8 +1,9 @@
 class MetaController < ApplicationController
   before_action :set_metum, only: [:show, :edit, :update, :destroy]
 
-  autocomplete :metum, :key, :full => true
-  autocomplete :metum, :value, :full => true
+  autocomplete :metum, :key, :full => true, :display_value => :key,  :scopes => [:unique_key]
+  autocomplete :metum, :value, :full => true, :display_value => :value,  :scopes => [:unique_value]
+
 
   # GET /meta
   # GET /meta.json
@@ -62,6 +63,14 @@ class MetaController < ApplicationController
       format.html { redirect_to meta_url }
       format.json { head :no_content }
     end
+  end
+
+  def autocomplete_metum_key 
+    render :json => Metum.any_of({ :key => /.*#{params[:term]}.*/i }).distinct(:key)
+  end
+
+  def autocomplete_metum_value
+    render :json => Metum.any_of({ :value => /.*#{params[:term]}.*/i }).distinct(:value)
   end
 
   private
