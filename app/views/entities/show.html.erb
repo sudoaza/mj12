@@ -5,5 +5,24 @@
   <%= @entity.title %>
 </p>
 
+<ul>
+<% @entity.meta.each do |meta| %>
+  <li><%= meta %></li>
+<% end %>
+</ul>
+
+<% @entity.a_links.each do |link| %>
+<p>
+<%= link %>
+</p>
+
+<ul>
+<% link.meta.each do |meta| %>
+  <li><%= meta %></li>
+<% end %>
+</ul>
+
+<%end %>
+
 <%= link_to 'Edit', edit_entity_path(@entity) %> |
 <%= link_to 'Back', entities_path %>
