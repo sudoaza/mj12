@@ -5,6 +5,9 @@ _Se tu propia agencia de inteligencia_
 Aplicacion para mapear relaciones entre entidades 
 (empresas, personas, organizaciones, etc.)
 
+
+![MJ12](captura.png)
+
 ### Entidad
 
 Entidad a relacionar, con posibilidad de agregar
@@ -26,18 +29,23 @@ Puede funcionar con otras versiones pero esta probado
 con estas
 
 **Ruby 1.9.3**
+
     ruby -v
 
 **Rails 4.0**
+
     rails -v
 
 **Ruby Gems 1.8.23**
+
     gem -v 
 
 **Bundler 1.5.2**
+
     bundle -v
 
 **Copypasta**
+
     sudo apt-get install ruby1.9.3 rails rubygems bundler
 
 ## Instalar
@@ -54,8 +62,5 @@ con estas
     rails s
     
     Visitar http://localhost:3000
-
-
-
 
 
