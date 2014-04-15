@@ -14,7 +14,15 @@ class Link
   accepts_nested_attributes_for :ent_b
 
   def to_s
-    s = self.ent_a.link + ' &lt;-&gt; ' + self.ent_b.link
+    s = ''
+    if self.ent_a.present?
+      s = self.ent_a.link
+    end
+    s = s + ' &lt;-&gt; ' 
+    if self.ent_b.present?
+      s = s + self.ent_b.link
+    end
+    s
   end
 
   def self.find_my_link(a_id, b_id)

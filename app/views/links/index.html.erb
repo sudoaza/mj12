@@ -21,7 +21,7 @@
         </ul>
         </td>
         <td><%= link_to 'Editar', edit_link_path(link) %></td>
-        <td><%= link_to 'Borrar', link, method: :delete, data: { confirm: "Seguro que quiere borrar la relación #{link.ent_a.title} <-> #{link.ent_b.title}?" } %></td>
+        <td><%= link_to 'Borrar', link, method: :delete, data: { confirm: "Seguro que quiere borrar la relación #{link}?" } %></td>
       </tr>
     <% end %>
   </tbody>
