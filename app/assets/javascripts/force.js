@@ -4,8 +4,8 @@ var width = 800,
 var color = d3.scale.category20();
 
 var force = d3.layout.force()
-    .charge(-120)
-    .linkDistance(30)
+    .charge(-60)
+    .linkDistance(20)
     .size([width, height]);
 
 var svg = d3.select("#chart").append("svg")
@@ -45,7 +45,7 @@ d3.json("/map.json", function(json) {
       .data(json.nodes)
     .enter().append("circle")
       .attr("class", "node")
-      .attr("r", function(d) { return links[d.index]; })
+      .attr("r", function(d) { return Math.log(links[d.index]) * 4 + 3; })
       .style("fill", function(d) { return color(d.weight); })
       .call(force.drag)
       .on('mouseover', tip.show)

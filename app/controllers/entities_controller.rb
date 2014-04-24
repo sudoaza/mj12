@@ -84,12 +84,20 @@ class EntitiesController < ApplicationController
 
     @entities.each do |ent|
       @indexs[ent.id.hash.abs] = i
-      @son['nodes'].push( {index: i, name: ent.title} )
+      if ent.meta.length > 0 
+        @son['nodes'].push( {index: i, name: ent.title, meta: Metum.for_export(ent.meta) } )
+      else
+        @son['nodes'].push( {index: i, name: ent.title} )
+      end
       i = i + 1
     end
 
     @links.each do |link|
-      @son['links'].push( {source: @indexs[link.ent_a.id.hash.abs], target: @indexs[link.ent_b.id.hash.abs]} )
+      if link.meta.length > 0 
+        @son['links'].push( {source: @indexs[link.ent_a.id.hash.abs], target: @indexs[link.ent_b.id.hash.abs], meta: Metum.for_export(link.meta)} )
+      else
+        @son['links'].push( {source: @indexs[link.ent_a.id.hash.abs], target: @indexs[link.ent_b.id.hash.abs]} )
+      end
     end
 
     render json: @son
@@ -105,26 +113,45 @@ class EntitiesController < ApplicationController
     json = JSON.parse(params[:json])
     nodes = []
 
+    # Import entities
     json['nodes'].each do |node|
       entity = Entity.find_my_title(node['name'])
-      if entity.present? 
-        nodes[node['index']] = entity
-      else
+
+      # Entity data
+      if entity.nil? 
         entity = Entity.new
         entity.title = node['name']
         entity.save()
-        nodes[node['index']] = entity
       end
+
+      # Entity metadata
+      if node['meta'].present?
+        node['meta'].each do |meta|
+          entity.add_meta(meta['key'] , meta['value'] , false)
+        end
+      end
+
+      nodes[node['index']] = entity
     end
-    json['links'].each do |link|
-      source = nodes[link['source']]
-      target = nodes[link['target']]
+
+    # Import links
+    json['links'].each do |link_ar|
+      source = nodes[link_ar['source']]
+      target = nodes[link_ar['target']]
       link = Link.find_my_link(source,target)
+
       if link.nil? 
         link = Link.new
         link.ent_a = source
         link.ent_b = target
         link.save()
+      end
+
+      # Link metadata
+      if link_ar['meta'].present?
+        link_ar['meta'].each do |meta|
+          link.add_meta(meta['key'] , meta['value'] , false)
+        end
       end
     end
     redirect_to '/'

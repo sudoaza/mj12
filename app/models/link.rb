@@ -28,4 +28,26 @@ class Link
   def self.find_my_link(a_id, b_id)
     self.find_by ent_a_id: a_id, ent_b_id: b_id
   end
+
+  def add_meta( key, value, override = true )
+    added = false
+    self.meta.each do |meta|
+      if meta.key == key
+        if meta.value == value 
+          added = true
+        elsif override
+          meta.value = value
+          added = true
+        end
+      end
+    end
+    if ! added 
+      meta = Metum.new
+      meta.key = key
+      meta.value = value
+      self.meta.push(meta)
+    end
+    self.save()
+  end
+
 end
