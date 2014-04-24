@@ -25,5 +25,10 @@ $('.add_meta_btn').on('click',function(e){
   return false;
 });
 
+$('#show-input').click(function(e){
+
+  $('#input-menu').toggle();
+
+});
 
 });

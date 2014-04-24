@@ -1,5 +1,7 @@
-var width = 800,
-    height = 600;
+
+
+var width = $(window).width() - 40,
+    height = $(window).height() - 100;
 
 var color = d3.scale.category20();
 

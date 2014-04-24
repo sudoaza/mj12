@@ -39,7 +39,9 @@
         </li>
       </ul>
 
+
     <%= form_tag entities_path, :method => 'get', :class => 'navbar-form navbar-right' do %>
+    <a class="btn btn-lg" id="show-input"><i class="glyphicon glyphicon-th white"></i></a>
     <div class="form-group">
     <%= text_field_tag :search, params[:search], :class => 'form-control'  %>
     </div>
