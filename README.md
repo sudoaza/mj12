@@ -20,7 +20,14 @@ metadata a la relacion.
 
 ### Meta
 
-A las personas y relaciones les podes agregar metadata.
+A las entidades y relaciones les podes agregar metadata.
+
+### Exportar, Importar y Bases de Datos
+
+@TODO Que se puedan guardar y recuperar diferentes bases de datos, por ahora se puede manual
+
+Exporta las entidades, relaciones y metadata en formato 
+json y se puede importar en el mismo formato.
 
 ## Dependencias
 
