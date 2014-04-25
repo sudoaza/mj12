@@ -13,7 +13,7 @@
 
   <div class="field entity">
     <%= f.label :title, "Nombre" %><br>
-    <%= f.autocomplete_field :title, autocomplete_entity_title_entities_path %>
+    <%= f.autocomplete_field :title, autocomplete_entity_title_entities_path, class: 'form-control' %>
   </div>
 
   <h4>Metadatos<i class="icon icon-help" title="Datos adicionales, ejemplo: dirección, telefono, mail, web."></i></h4>
@@ -23,11 +23,11 @@
     <div class="row meta">
     <div class="field col-md-6">
       <%= ff.label :key, "Campo" %>
-      <%= ff.autocomplete_field :key, autocomplete_metum_key_meta_path %>
+      <%= ff.autocomplete_field :key, autocomplete_metum_key_meta_path, class: 'form-control' %>
     </div>
     <div class="field col-md-6">
       <%= ff.label :value, "Valor" %>
-      <%= ff.autocomplete_field :value, autocomplete_metum_value_meta_path %>
+      <%= ff.autocomplete_field :value, autocomplete_metum_value_meta_path, class: 'form-control' %>
     </div>
     </div>
   <% end %>

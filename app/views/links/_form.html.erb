@@ -15,7 +15,7 @@
   <%= f.fields_for :ent_a do |ff| %>
     <div class="field col-md-6">
       <%= ff.label :title, "Entidad A" %>
-      <%= ff.autocomplete_field :title, autocomplete_entity_title_entities_path, :update_elements => {:id => '#link_ent_a_attributes_id'} %>
+      <%= ff.autocomplete_field :title, autocomplete_entity_title_entities_path, :update_elements => {:id => '#link_ent_a_attributes_id'}, class: 'form-control' %>
       <%= ff.hidden_field :id %>
     </div>
   <% end %>
@@ -24,7 +24,7 @@
   <%= f.fields_for :ent_b do |ff| %>
     <div class="field col-md-6">
       <%= ff.label :title, "Entidad B" %>
-      <%= ff.autocomplete_field :title, autocomplete_entity_title_entities_path, :update_elements => {:id => '#link_ent_b_attributes_id'}   %>
+      <%= ff.autocomplete_field :title, autocomplete_entity_title_entities_path, :update_elements => {:id => '#link_ent_b_attributes_id'}, class: 'form-control'   %>
       <%= ff.hidden_field :id %>
     </div>
   <% end %> 
@@ -37,11 +37,11 @@
     <div class="row meta">
     <div class="field col-md-6">
       <%= ff.label :key, "Campo" %>
-      <%= ff.autocomplete_field :key, autocomplete_metum_key_meta_path %>
+      <%= ff.autocomplete_field :key, autocomplete_metum_key_meta_path, class: 'form-control' %>
     </div>
     <div class="field col-md-6">
       <%= ff.label :value, "Valor" %>
-      <%= ff.autocomplete_field :value, autocomplete_metum_value_meta_path %>
+      <%= ff.autocomplete_field :value, autocomplete_metum_value_meta_path, class: 'form-control' %>
     </div>
     </div>
   <% end %>
