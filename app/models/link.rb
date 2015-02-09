@@ -15,14 +15,9 @@ class Link
 
   def to_s
     s = ''
-    if self.ent_a.present?
-      s = self.ent_a.link
-    end
-    s = s + ' &lt;-&gt; ' 
-    if self.ent_b.present?
-      s = s + self.ent_b.link
-    end
-    s
+    s = self.ent_a.link if self.ent_a.present?
+    s = s + ' &lt;-&gt; '
+    s = s + self.ent_b.link if self.ent_b.present?
   end
 
   def self.find_my_link(a_id, b_id)
